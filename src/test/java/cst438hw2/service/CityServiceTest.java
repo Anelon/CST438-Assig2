@@ -36,27 +36,6 @@ public class CityServiceTest {
 	@MockBean
 	private CountryRepository countryRepository;
 
-	@BeforeEach
-	public void setUpEach() {
-		MockitoAnnotations.initMocks(this);
-
-		//set up fake temp and time
-		//temp should end up 82.0 and timeStr should be "11:08 AM"
-		TempAndTime tempAndTime = new TempAndTime(301.09, 1594058917,-25200);
-		//set up weather returns
-		given(weatherService.getTempAndTime("OneCity")).willReturn(tempAndTime);
-		given(weatherService.getTempAndTime("NonCity")).willReturn(null);
-		//set up cityService returns
-		City oneCity = new City(1, "OneCity", "AUS", "OneDistrict", 100);
-		List<City> oneList = new ArrayList<City>();
-		oneList.add(oneCity);
-		given(cityRepository.findByName("OneCity")).willReturn(oneList);
-
-
-		List<City> nonList = new ArrayList<City>();
-		given(cityRepository.findByName("NonCity")).willReturn(nonList);
-	}
-	
 	@Test
 	public void contextLoads() {
 		MockitoAnnotations.initMocks(this);
