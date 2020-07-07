@@ -12,6 +12,7 @@ public class CityInfo {
 	 String time;
 
 	public CityInfo() {
+
 	}
 
 	public CityInfo(City city, String countryName, double temp, String time) {
