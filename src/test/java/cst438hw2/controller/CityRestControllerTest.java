@@ -48,7 +48,7 @@ public class CityRestControllerTest {
 		MockitoAnnotations.initMocks(this);
 		JacksonTester.initFields(this, new ObjectMapper());
 	}
-	
+
 	@Test
 	public void contextLoads() {
 	}
