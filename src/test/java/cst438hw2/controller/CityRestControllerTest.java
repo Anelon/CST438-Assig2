@@ -73,4 +73,18 @@ public class CityRestControllerTest {
 		assertThat(infoResult).isEqualTo(expected);
 	}
 
+	@Test
+	public void noCityInfo() throws Exception {
+		// TODO your code goes here
+		City city = new City(1, "TestCity", "TST", "DistrctTest", 10000);
+		CityInfo info = new CityInfo(city, "Test Country", 12.2, "12:00 am");
+		//set up giving the info
+		given(cityService.getCityInfo("TestCity")).willReturn(info);
+
+		MockHttpServletResponse res = mvc.perform(get("/api/cities/NotACity"))
+				.andReturn().getResponse();
+
+		assertThat(res.getStatus()).isEqualTo(HttpStatus.NOT_FOUND.value());
+	}
+
 }
